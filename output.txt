@@ -1,0 +1,12 @@
+talon@UdacityFullStack:~/newsDB-project$ python3
+Python 3.5.2 (default, Nov 12 2018, 13:43:14) 
+[GCC 5.4.0 20160609] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import newsdb
+>>> newsdb.top_art()
+[('candidate-is-jerk', 342102), ('bears-love-berries', 256365), ('bad-things-gone', 171762)]
+>>> newsdb.top_auth()
+[('Ursula La Multa', 512805), ('Rudolf von Treppenwitz', 427781), ('Anonymous Contributor', 171762), ('Markoff Chaney', 85387)]
+>>> newsdb.high_error()
+[(datetime.datetime(2016, 7, 17, 0, 0, tzinfo=psycopg2.tz.FixedOffsetTimezone(offset=0, name=None)), Decimal('2.21'))]
+
