@@ -34,13 +34,15 @@ def top_auth():
 
 def high_error():
   # Return days where >1% of requests had errors.
-
-
-
-#  db = psycopg2.connect(database=DB_name)
-#  c = db.cursor()
-#  c.execute("select content, time from posts order by time desc;")
-#  posts = c.fetchall()
-#  db.close()
-  return top
+  db = psycopg2.connect(database=DB_name)
+  c = db.cursor()
+  c.execute("select total.date, round(100 * (err.errors::decimal / (total.total + err.errors)), 2) as percentfailure
+    from (select date_trunc('day', log.time) as date, count(*) as total from log where log.method = 'GET' group by date) as total
+      join (select date_trunc('day', log.time) as date, count(*) as errors from log where log.status != '200 OK' group by date) as err
+      on total.date = err.date
+    where round(100 * (err.errors::decimal / (total.total + err.errors)), 2) > 1
+    order by percentfailure desc;")
+  higherror = c.fetchall()
+  db.close()
+  return higherror
 
