@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # "Database code" for the news DB.
 
 import psycopg2
