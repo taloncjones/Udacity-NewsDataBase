@@ -38,39 +38,45 @@ Date: 2016-07-17 00:00:00+00:00  Error %: 2.21
 ```
 
 ## Overview:
+```
 #!/usr/bin/env python3
 
 import psycopg2
 
 DB_name = "news"
+```
 
-#### Return top 3 news articles based on view count
-##### def top_art():
- - Connect to database "news"
- - Send psql query
- - Print Article Titles\t View Count
- - Return topthree
+#### def top_art():
+##### Return top 3 news articles based on view count
+ 1. Connect to database "news"
+ 2. Send psql query
+ 3. Print Article Titles\t View Count
+ 4. Return topthree
 
-#### Return top authors based on article view count
-##### def top_auth():
- - Connect to database "news"
- - Send psql query
- - Print Author Name\t Total View Count
- - Return topauth
+#### def top_auth():
+##### Return top authors based on article view count
+ 1. Connect to database "news"
+ 2. Send psql query
+ 3. Print Author Name\t Total View Count
+ 4. Return topauth
 
-#### Return days with HTTP GET requests resulting in errors >1%
-##### def high_error():
- - Connect to database "news"
- - Send psql query
- - Print Date\t Error %
- - Return higherror
+#### def high_error():
+##### Return days with HTTP GET requests resulting in errors >1%
+ 1. Connect to database "news"
+ 2. Send psql query
+ 3. Print Date\t Error %
+ 4. Return higherror
 
 #### Selector dictionary for above functions
+```
 selector = {
 }
+```
 
 #### Introduction text when program starts
+```
 intro = ''' '''
+```
 
 #### Main function
 ```
