@@ -11,14 +11,18 @@ def top_art():
     # Return top three news articles of all time.
     db = psycopg2.connect(database=DB_name)
     c = db.cursor()
-    c.execute('''select articles.slug, count(*) as num
+    c.execute('''select articles.title, count(*) as num
       from articles
       join log on log.path like '%' || articles.slug || '%'
-      group by articles.slug
+      group by articles.title
       order by num desc
       limit 3;''')
     topthree = c.fetchall()
     db.close()
+    print('Top 3 Articles:')
+    for row in topthree:
+        x, y = row
+        print('Article: %s\t Article Views: %s' % (x, y))
     return topthree
 
 
@@ -34,6 +38,10 @@ def top_auth():
       order by num desc;''')
     topauth = c.fetchall()
     db.close()
+    print('Top Authors:')
+    for row in topauth:
+        x, y = row
+        print('Author: %s\t Total Article Views: %s' % (x, y))
     return topauth
 
 
@@ -54,14 +62,18 @@ def high_error():
       order by percentfailure desc;''')
     higherror = c.fetchall()
     db.close()
+    print('High Error Days:')
+    for row in higherror:
+        x, y = row
+        print('Date: %s\t Error %%: %s' % (x, y))
     return higherror
 
 
 # Selector dictionary for above functions
 selector = {
-    'articles':top_art,
-    'authors':top_auth,
-    'errors':high_error
+    'articles': top_art,
+    'authors': top_auth,
+    'errors': high_error
 }
 
 
@@ -73,12 +85,16 @@ Type 'errors' to view days that the error percentage exceeded 1%.
 Type 'exit' to exit the program'''
 
 
+# Main function
 if __name__ == "__main__":
     print(intro)
     choice = ''
+    # Until user types 'exit', keep asking for input
     while choice != 'exit':
-      choice = input('> ').lower()
-      try:
-        print(selector[choice]())
-      except KeyError:
-        if choice != 'exit': print('Not a valid option.')
+        choice = input('> ').lower()
+        try:
+            selector[choice]()
+        # If input is not a call to top_art, top_aut, high_error, or exit
+        except KeyError:
+            if choice != 'exit':
+                print('Not a valid option.')
