@@ -55,3 +55,30 @@ def high_error():
     higherror = c.fetchall()
     db.close()
     return higherror
+
+
+# Selector dictionary for above functions
+selector = {
+    'articles':top_art,
+    'authors':top_auth,
+    'errors':high_error
+}
+
+
+# Introduction text when program starts
+intro = '''Welcome to the News Database!
+Type 'articles' to view the top 3 articles in the database.
+Type 'authors' to view the top authors.
+Type 'errors' to view days that the error percentage exceeded 1%.
+Type 'exit' to exit the program'''
+
+
+if __name__ == "__main__":
+    print(intro)
+    choice = ''
+    while choice != 'exit':
+      choice = input('> ').lower()
+      try:
+        print(selector[choice]())
+      except KeyError:
+        if choice != 'exit': print('Not a valid option.')
