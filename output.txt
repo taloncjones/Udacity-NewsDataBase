@@ -1,12 +1,21 @@
-talon@UdacityFullStack:~/newsDB-project$ python3
-Python 3.5.2 (default, Nov 12 2018, 13:43:14) 
-[GCC 5.4.0 20160609] on linux
-Type "help", "copyright", "credits" or "license" for more information.
->>> import newsdb
->>> newsdb.top_art()
-[('candidate-is-jerk', 342102), ('bears-love-berries', 256365), ('bad-things-gone', 171762)]
->>> newsdb.top_auth()
-[('Ursula La Multa', 512805), ('Rudolf von Treppenwitz', 427781), ('Anonymous Contributor', 171762), ('Markoff Chaney', 85387)]
->>> newsdb.high_error()
-[(datetime.datetime(2016, 7, 17, 0, 0, tzinfo=psycopg2.tz.FixedOffsetTimezone(offset=0, name=None)), Decimal('2.21'))]
-
+talon@UdacityFullStack:~/newsDB-project$ python3 newsdb.py 
+Welcome to the News Database!
+Type 'articles' to view the top 3 articles in the database.
+Type 'authors' to view the top authors.
+Type 'errors' to view days that the error percentage exceeded 1%.
+Type 'exit' to exit the program
+> articles
+Top 3 Articles:
+Article: Candidate is jerk, alleges rival        Article Views: 342102
+Article: Bears love berries, alleges bear        Article Views: 256365
+Article: Bad things gone, say good people        Article Views: 171762
+> authors
+Top Authors:
+Author: Ursula La Multa  Total Article Views: 512805
+Author: Rudolf von Treppenwitz   Total Article Views: 427781
+Author: Anonymous Contributor    Total Article Views: 171762
+Author: Markoff Chaney   Total Article Views: 85387
+> errors
+High Error Days:
+Date: 2016-07-17 00:00:00+00:00  Error %: 2.21
+> exit
