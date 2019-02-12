@@ -82,7 +82,7 @@ intro = '''Welcome to the News Database!
 Type 'articles' to view the top 3 articles in the database.
 Type 'authors' to view the top authors.
 Type 'errors' to view days that the error percentage exceeded 1%.
-Type 'exit' to exit the program'''
+Type 'exit' to exit the program.'''
 
 
 # Main function
