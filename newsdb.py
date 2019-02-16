@@ -6,14 +6,23 @@ import psycopg2
 
 DB_name = "news"
 
+def connect_db():
+    try:
+        db = psycopg2.connect(database=DB_name)
+    except psycopg2.Error as e:
+        print('Unable to connect to the database')
+        exit()
+    return db
+
 
 def top_art():
     # Return top three news articles of all time.
-    db = psycopg2.connect(database=DB_name)
+    db = connect_db()
     c = db.cursor()
     c.execute('''select articles.title, count(*) as num
       from articles
       join log on log.path like '%' || articles.slug || '%'
+      where log.status = '200 OK'
       group by articles.title
       order by num desc
       limit 3;''')
@@ -28,12 +37,13 @@ def top_art():
 
 def top_auth():
     # Return top authors of all time.
-    db = psycopg2.connect(database=DB_name)
+    db = connect_db()
     c = db.cursor()
     c.execute('''select authors.name, count(*) as num
       from articles
       join log on log.path like '%' || articles.slug || '%'
       join authors on articles.author = authors.id
+      where log.status = '200 OK'
       group by authors.name
       order by num desc;''')
     topauth = c.fetchall()
@@ -47,7 +57,7 @@ def top_auth():
 
 def high_error():
     # Return days where >1% of requests had errors.
-    db = psycopg2.connect(database=DB_name)
+    db = connect_db()
     c = db.cursor()
     c.execute('''select total.date,
         round(100 * (err.errors::decimal / (total.total + err.errors)), 2)
