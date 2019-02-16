@@ -1,4 +1,4 @@
-talon@UdacityFullStack:~/newsDB-project$ python3 newsdb.py 
+talon@UdacityFullStack:~/myprojects/newsDB$ python3 newsdb.py 
 Welcome to the News Database!
 Type 'articles' to view the top 3 articles in the database.
 Type 'authors' to view the top authors.
@@ -6,15 +6,15 @@ Type 'errors' to view days that the error percentage exceeded 1%.
 Type 'exit' to exit the program.
 > articles
 Top 3 Articles:
-Article: Candidate is jerk, alleges rival        Article Views: 342102
-Article: Bears love berries, alleges bear        Article Views: 256365
-Article: Bad things gone, say good people        Article Views: 171762
+Article: Candidate is jerk, alleges rival        Article Views: 338647
+Article: Bears love berries, alleges bear        Article Views: 253801
+Article: Bad things gone, say good people        Article Views: 170098
 > authors
 Top Authors:
-Author: Ursula La Multa  Total Article Views: 512805
-Author: Rudolf von Treppenwitz   Total Article Views: 427781
-Author: Anonymous Contributor    Total Article Views: 171762
-Author: Markoff Chaney   Total Article Views: 85387
+Author: Ursula La Multa  Total Article Views: 507594
+Author: Rudolf von Treppenwitz   Total Article Views: 423457
+Author: Anonymous Contributor    Total Article Views: 170098
+Author: Markoff Chaney   Total Article Views: 84557
 > errors
 High Error Days:
 Date: 2016-07-17 00:00:00+00:00  Error %: 2.21
