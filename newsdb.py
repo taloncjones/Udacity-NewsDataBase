@@ -6,6 +6,7 @@ import psycopg2
 
 DB_name = "news"
 
+
 def connect_db():
     try:
         db = psycopg2.connect(database=DB_name)
