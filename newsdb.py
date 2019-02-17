@@ -22,7 +22,7 @@ def top_art():
     c = db.cursor()
     c.execute('''select articles.title, count(*) as num
       from articles
-      join log on log.path like '%' || articles.slug || '%'
+      join log on log.path = concat('/article/', articles.slug)
       where log.status = '200 OK'
       group by articles.title
       order by num desc
@@ -42,7 +42,7 @@ def top_auth():
     c = db.cursor()
     c.execute('''select authors.name, count(*) as num
       from articles
-      join log on log.path like '%' || articles.slug || '%'
+      join log on log.path = concat('/article/', articles.slug)
       join authors on articles.author = authors.id
       where log.status = '200 OK'
       group by authors.name
